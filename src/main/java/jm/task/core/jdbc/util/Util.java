@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Util {
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/first_base?serverTimezone=Europe/Moscow&useSSL=false";
         String name = "user";
         String password = "123";
@@ -16,6 +16,7 @@ public class Util {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        connection.setAutoCommit(false);
         return connection;
     }
 
