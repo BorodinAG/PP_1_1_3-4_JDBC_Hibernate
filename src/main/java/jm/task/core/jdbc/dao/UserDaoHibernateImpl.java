@@ -1,10 +1,10 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,10 +65,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         try {
             transaction = session.beginTransaction();
-
-            session.createQuery("delete from User where id=?id", User.class);
-//            session.remove(removeUserById(id));
-//            session.remove(session.get(User.class, id));
+            session.createQuery("delete from User where id=:id ").setParameter("id",id).executeUpdate();
             logger.info("User remove. Id = " + id);
             session.getTransaction();
             transaction.commit();
@@ -83,8 +80,8 @@ public class UserDaoHibernateImpl implements UserDao {
         List<User> userList = new ArrayList<>();
         try {
             transaction = session.beginTransaction();
-//            session.createQuery("from User ").list().forEach(User(setId,));
-            userList = session.createQuery("select i from User i", User.class).getResultList();
+            userList = session.createQuery("from User ").getResultList();
+//            userList = session.createQuery("select i from User i", User.class).getResultList();
             session.getTransaction();
             transaction.commit();
 
