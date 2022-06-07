@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class UserDaoHibernateImpl implements UserDao, UserService {
+public class UserDaoHibernateImpl implements UserDao {
 
     private static final Logger logger = Logger.getLogger(UserDaoHibernateImpl.class.getName());
     private static final Session session = Util.getSessionFactory().openSession();
