@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class UserDaoJDBCImpl implements UserDao, UserService {
+public class UserDaoJDBCImpl implements UserDao {
 
     private static final Logger logger = Logger.getLogger(UserDaoJDBCImpl.class.getName());
     private static final Connection connection = Util.getConnection();
